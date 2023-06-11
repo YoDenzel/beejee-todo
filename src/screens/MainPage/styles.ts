@@ -8,7 +8,7 @@ export default StyleSheet.create({
     paddingHorizontal: 20,
   },
   todoListContainer: {
-    flex: 1,
+    height: '100%',
     justifyContent: 'center',
   },
   addTodoButton: {

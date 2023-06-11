@@ -5,8 +5,13 @@ export default StyleSheet.create({
     flex: 1,
     paddingHorizontal: 20,
     alignItems: 'center',
-    justifyContent: 'center',
     backgroundColor: '#ffffff',
+  },
+  container: {
+    flex: 1,
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   screenTitle: {
     fontSize: 24,
@@ -16,7 +21,6 @@ export default StyleSheet.create({
     marginBottom: 20,
   },
   loginButtonsContainer: {
-    height: 150,
     width: '100%',
     borderRadius: 25,
     paddingHorizontal: 20,
@@ -30,7 +34,11 @@ export default StyleSheet.create({
     },
     shadowRadius: 24,
     elevation: 4,
+    padding: 20,
   },
   authButtonContainer: { backgroundColor: '#14bd88' },
   authButtonText: { color: '#fff' },
+  inputContainer: {
+    marginBottom: 20,
+  },
 });

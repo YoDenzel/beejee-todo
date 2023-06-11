@@ -1,43 +1,69 @@
-import { TouchableOpacity, View } from 'react-native';
+import { useState } from 'react';
+import { Alert, TouchableOpacity, View } from 'react-native';
+import { Control, FieldValues, useForm } from 'react-hook-form';
+import { FlatList } from 'react-native-gesture-handler';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useStore } from 'effector-react';
 
+import { TTodo } from 'types';
+import { useCreateTodo, useGetTodosList, usePagination } from 'hooks';
 import { RootStackParamList } from 'navigation/types';
+import { TodoItem } from 'components/TodoItem';
+import { ButtonDefault } from 'components/ButtonDefault';
+import { Pagination } from 'components/Pagination';
+import { Icons } from 'assets/icons';
+import { AddTodoForm } from 'modals/AddTodoForm';
+import { $accessToken, setAccessToken } from 'models/auth';
 
 import styles from './styles';
-import { TodoItem } from 'components/TodoItem';
-import { useGetTodosList } from 'hooks';
-import { FlatList } from 'react-native-gesture-handler';
-import { TTodo } from 'types';
-import { Icons } from 'assets/icons';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { AddTodoForm } from 'modals/AddTodoForm';
-import { Control, FieldValues, useForm } from 'react-hook-form';
-import { useState } from 'react';
 
 export default function MainPage({
   navigation,
 }: NativeStackScreenProps<RootStackParamList, 'MainPage'>) {
   const { top } = useSafeAreaInsets();
-  const { data } = useGetTodosList({ page: 1 });
-  const {
-    control,
-    handleSubmit,
-    reset,
-    formState: { isValid },
-  } = useForm({
+  const [page, setPage] = useState(1);
+  const { data } = useGetTodosList({ page });
+  const isAuth = useStore($accessToken);
+  const { control, handleSubmit, reset } = useForm({
     mode: 'all',
     defaultValues: {
       text: '',
-      name: '',
+      username: '',
       email: '',
     },
+  });
+  const { mutateAsync } = useCreateTodo();
+  const paginationRange = usePagination({
+    total: data?.message.total_task_count || 0,
+    currentPage: page,
+    pageSize: 3,
   });
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const onSubmit = handleSubmit(todoData => {
-    console.log(todoData);
-    reset();
-    setIsModalVisible(false);
+    if (
+      todoData.text === '' ||
+      todoData.username === '' ||
+      todoData.email === ''
+    ) {
+      Alert.alert('Error', 'Please fill all fields');
+      return;
+    } else if (
+      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(todoData.email)
+    ) {
+      Alert.alert('Error', 'Please enter valid email');
+      return;
+    }
+    mutateAsync(todoData)
+      .then(() => {
+        reset();
+        setIsModalVisible(false);
+        Alert.alert('Success', 'Todo successfully created');
+      })
+      .catch(e => {
+        Alert.alert('Error', e.message);
+      });
   });
 
   return (
@@ -61,12 +87,28 @@ export default function MainPage({
               userName={item.username}
             />
           )}
+          ListFooterComponent={() => (
+            <Pagination
+              onPageChange={setPage}
+              paginationRange={paginationRange || []}
+              activePage={page}
+            />
+          )}
+        />
+        <ButtonDefault
+          text={isAuth ? 'Выйти' : 'Войти как админ'}
+          onPress={
+            !isAuth
+              ? () => navigation.navigate('LoginPage')
+              : () => setAccessToken(null)
+          }
         />
       </View>
       <AddTodoForm
         visible={isModalVisible}
         control={control as unknown as Control<FieldValues>}
         onClose={() => setIsModalVisible(false)}
+        onSubmit={onSubmit}
       />
     </>
   );
