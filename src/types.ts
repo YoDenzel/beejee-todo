@@ -20,3 +20,32 @@ export type TTodoListParams = {
   sort_field?: 'id' | 'username' | 'email' | 'status';
   sort_direction?: 'asc' | 'desc';
 };
+
+export type TSignInParams = {
+  username: string;
+  password: string;
+};
+
+export type TSignInResponse = {
+  status: string;
+  message: {
+    token: string;
+  };
+};
+
+export type TCreateTodoParams = {
+  username: string;
+  email: string;
+  text: string;
+};
+
+export type TCreateTodoResponse = {
+  status: string;
+  message: {
+    id: number;
+    username: string;
+    email: string;
+    text: string;
+    status: 0 | 1 | 10 | 11;
+  };
+};

@@ -37,7 +37,7 @@ const TextFieldWithTitle = ({
       control={control}
       render={({ field: { onChange, value } }) => (
         <View style={[styles.container, containerStyle]}>
-          <Text style={[styles.title, titleStyle]}>{title}</Text>
+          {title && <Text style={[styles.title, titleStyle]}>{title}</Text>}
           <View
             style={[
               styles.inputWrapper,
@@ -64,7 +64,7 @@ const TextFieldWithTitle = ({
 };
 
 type TTextFieldWithTitle = {
-  title: string;
+  title?: string;
   placeholder?: string;
   secureTextEntry?: boolean;
   maxLength?: number;

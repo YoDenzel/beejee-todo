@@ -7,7 +7,7 @@ import { ButtonDefault } from 'components/ButtonDefault';
 import { Control, FieldValues } from 'react-hook-form';
 import { Icons } from 'assets/icons';
 
-const AddTodoForm = ({ visible, control, onClose }: TAddTodoForm) => {
+const AddTodoForm = ({ visible, control, onClose, onSubmit }: TAddTodoForm) => {
   return (
     <Modal visible={visible} transparent onRequestClose={onClose}>
       <View style={styles.container}>
@@ -16,7 +16,7 @@ const AddTodoForm = ({ visible, control, onClose }: TAddTodoForm) => {
           <Icons.CloseIcon width={28} height={28} />
         </TouchableOpacity>
         <ScrollView contentContainerStyle={styles.inputContainer}>
-          <TextFieldWithTitle control={control} name="name" title="Имя" />
+          <TextFieldWithTitle control={control} name="username" title="Имя" />
           <TextFieldWithTitle control={control} name="email" title="Почта" />
           <TextFieldWithTitle
             control={control}
@@ -30,7 +30,7 @@ const AddTodoForm = ({ visible, control, onClose }: TAddTodoForm) => {
           />
           <ButtonDefault
             text="Отправить"
-            onPress={() => undefined}
+            onPress={onSubmit}
             containerStyle={styles.sendButtonContainer}
           />
         </ScrollView>
@@ -43,6 +43,7 @@ type TAddTodoForm = {
   visible: boolean;
   control: Control<FieldValues>;
   onClose: () => void;
+  onSubmit: () => void;
 };
 
 export default AddTodoForm;
