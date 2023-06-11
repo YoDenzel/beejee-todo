@@ -779,6 +779,14 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
+"@effector-storage/react-native-async-storage@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@effector-storage/react-native-async-storage/-/react-native-async-storage-1.0.2.tgz#b4b2256047dda6ee94694d9ffe45f79dd366f191"
+  integrity sha512-60v+nW6dlCuaXcOtTLZpr0BAeRjKjPCDbaHkxJ9pJv/AJnS2JjFfKse3DOaB+21BixbyRsR69cVeSCaYOqV4Wg==
+  dependencies:
+    "@react-native-async-storage/async-storage" "^1.18.1"
+    effector-storage "^6.0.0"
+
 "@egjs/hammerjs@^2.0.17":
   version "2.0.17"
   resolved "https://registry.yarnpkg.com/@egjs/hammerjs/-/hammerjs-2.0.17.tgz#5dc02af75a6a06e4c2db0202cae38c9263895124"
@@ -1101,6 +1109,13 @@
   dependencies:
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
+
+"@react-native-async-storage/async-storage@^1.18.1":
+  version "1.18.2"
+  resolved "https://registry.yarnpkg.com/@react-native-async-storage/async-storage/-/async-storage-1.18.2.tgz#ec8fd487a0b6c9500b43ece4b8779d1561f12e91"
+  integrity sha512-dM8AfdoeIxlh+zqgr0o5+vCTPQ0Ru1mrPzONZMsr7ufp5h+6WgNxQNza7t0r5qQ6b04AJqTlBNixTWZxqP649Q==
+  dependencies:
+    merge-options "^3.0.4"
 
 "@react-native-community/cli-clean@^9.2.1":
   version "9.2.1"
@@ -2825,6 +2840,11 @@ effector-react@^22.5.3:
   dependencies:
     use-sync-external-store "^1.0.0"
 
+effector-storage@^6.0.0, effector-storage@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/effector-storage/-/effector-storage-6.0.1.tgz#da4530f4ad8cc7e5d9466e3e5ccdc260a4482ded"
+  integrity sha512-uIPbVnBYyJLhfQnJ35f+ideqj8rJ+RcFvLw2UhhIUicbMaeu/UmhUeEf2I2H1N9WOTuEuGfDSHCHO9a4iLdSiw==
+
 effector@^22.8.6:
   version "22.8.6"
   resolved "https://registry.yarnpkg.com/effector/-/effector-22.8.6.tgz#254af8966ba52f9abe2a9db703ec0e9d424bcb8e"
@@ -4100,6 +4120,11 @@ is-number@^7.0.0:
   resolved "https://registry.yarnpkg.com/is-number/-/is-number-7.0.0.tgz#7535345b896734d5f80c4d06c50955527a14f12b"
   integrity sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==
 
+is-plain-obj@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/is-plain-obj/-/is-plain-obj-2.1.0.tgz#45e42e37fccf1f40da8e5f76ee21515840c09287"
+  integrity sha512-YWnfyRwxL/+SsrWYfOpUtz5b3YD+nyfkHvjbcanzk8zgyO4ASD67uVMRt8k5bM4lLMDnXfriRhOpemw+NfT1eA==
+
 is-plain-object@^2.0.3, is-plain-object@^2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/is-plain-object/-/is-plain-object-2.0.4.tgz#2c163b3fafb1b606d9d17928f05c2a1c38e07677"
@@ -5016,6 +5041,13 @@ memoize-one@^5.0.0:
   version "5.2.1"
   resolved "https://registry.yarnpkg.com/memoize-one/-/memoize-one-5.2.1.tgz#8337aa3c4335581839ec01c3d594090cebe8f00e"
   integrity sha512-zYiwtZUcYyXKo/np96AGZAckk+FWWsUdJ3cHGGmld7+AhvcWmQyGCYUh1hc4Q/pkOhb65dQR/pqCyK0cOaHz4Q==
+
+merge-options@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/merge-options/-/merge-options-3.0.4.tgz#84709c2aa2a4b24c1981f66c179fe5565cc6dbb7"
+  integrity sha512-2Sug1+knBjkaMsMgf1ctR1Ujx+Ayku4EdJN4Z+C2+JzoeF7A3OZ9KM2GY0CpQS51NR61LTurMJrRKPhSs3ZRTQ==
+  dependencies:
+    is-plain-obj "^2.1.0"
 
 merge-stream@^2.0.0:
   version "2.0.0"

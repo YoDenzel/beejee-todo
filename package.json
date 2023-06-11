@@ -10,6 +10,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@effector-storage/react-native-async-storage": "^1.0.2",
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",
     "@react-navigation/stack": "^6.3.16",
@@ -17,6 +18,7 @@
     "babel-plugin-module-resolver": "^5.0.0",
     "effector": "^22.8.6",
     "effector-react": "^22.5.3",
+    "effector-storage": "^6.0.1",
     "react": "18.1.0",
     "react-hook-form": "^7.44.3",
     "react-native": "0.70.6",
