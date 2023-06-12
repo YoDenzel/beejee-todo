@@ -1,4 +1,4 @@
-import { setAccessToken } from 'models/auth';
+import { $accessToken, setAccessToken } from 'models/auth';
 import { Alert } from 'react-native';
 import {
   TCreateTodoParams,
@@ -6,6 +6,7 @@ import {
   TSignInResponse,
   TTodoList,
   TTodoListParams,
+  TUpdateTodo,
 } from 'types';
 
 const BASE_URL = 'https://uxcandy.com/~shapoval/test-task-backend/v2';
@@ -69,10 +70,17 @@ export const signIn = async (
   }
 };
 
-export const updateTodo = async (formData: FormData) => {
-  const response = await fetch(BASE_URL, {
+export const updateTodo = async (formData: TUpdateTodo, id: number) => {
+  const data = new FormData();
+  const accessToken = $accessToken.getState();
+  formData?.username && data.append('username', formData.username);
+  formData?.status !== undefined && data.append('status', formData.status);
+  formData?.text && data.append('text', formData.text);
+  formData?.email && data.append('email', formData.email);
+  data.append('token', accessToken);
+  const response = await fetch(`${BASE_URL}/edit/${id}/${DEVELOPER_NAME}`, {
     method: 'POST',
-    body: formData,
+    body: data,
     headers: {
       'Content-Type': 'multipart/form-data',
     },
