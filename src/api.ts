@@ -14,12 +14,9 @@ const DEVELOPER_NAME = '?developer=DenisDolbilin';
 
 export const getAllTodos = async ({
   page,
-  sort_direction,
-  sort_field,
+  sortUrl,
 }: TTodoListParams): Promise<TTodoList | undefined> => {
-  const url = `${
-    BASE_URL + DEVELOPER_NAME
-  }&page=${page}&sort_direction=${sort_direction}&sort_field=${sort_field}`;
+  const url = `${BASE_URL + DEVELOPER_NAME}&page=${page}&${sortUrl}`;
   try {
     const response = await fetch(url);
     const result = await response.json();

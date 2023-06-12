@@ -17,13 +17,14 @@ import { AddTodoForm } from 'modals/AddTodoForm';
 import { $accessToken, setAccessToken } from 'models/auth';
 
 import styles from './styles';
+import { TodoListHeader } from 'components/TodoListHeader';
 
 export default function MainPage({
   navigation,
 }: NativeStackScreenProps<RootStackParamList, 'MainPage'>) {
   const { top } = useSafeAreaInsets();
   const [page, setPage] = useState(1);
-  const { data } = useGetTodosList({ page });
+  const { data } = useGetTodosList(page);
   const isAuth = useStore($accessToken);
   const { control, handleSubmit, reset } = useForm({
     mode: 'all',
@@ -77,6 +78,7 @@ export default function MainPage({
         <FlatList
           keyExtractor={item => item.id.toString()}
           contentContainerStyle={styles.todoListContainer}
+          ListHeaderComponent={() => <TodoListHeader />}
           ItemSeparatorComponent={() => <View style={styles.listSeparator} />}
           data={data?.message.tasks || ([] as unknown as TTodo[])}
           renderItem={({ item }) => (
