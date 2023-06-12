@@ -779,14 +779,6 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@effector-storage/react-native-async-storage@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@effector-storage/react-native-async-storage/-/react-native-async-storage-1.0.2.tgz#b4b2256047dda6ee94694d9ffe45f79dd366f191"
-  integrity sha512-60v+nW6dlCuaXcOtTLZpr0BAeRjKjPCDbaHkxJ9pJv/AJnS2JjFfKse3DOaB+21BixbyRsR69cVeSCaYOqV4Wg==
-  dependencies:
-    "@react-native-async-storage/async-storage" "^1.18.1"
-    effector-storage "^6.0.0"
-
 "@egjs/hammerjs@^2.0.17":
   version "2.0.17"
   resolved "https://registry.yarnpkg.com/@egjs/hammerjs/-/hammerjs-2.0.17.tgz#5dc02af75a6a06e4c2db0202cae38c9263895124"
@@ -1110,7 +1102,7 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@react-native-async-storage/async-storage@^1.18.1":
+"@react-native-async-storage/async-storage@^1.18.2":
   version "1.18.2"
   resolved "https://registry.yarnpkg.com/@react-native-async-storage/async-storage/-/async-storage-1.18.2.tgz#ec8fd487a0b6c9500b43ece4b8779d1561f12e91"
   integrity sha512-dM8AfdoeIxlh+zqgr0o5+vCTPQ0Ru1mrPzONZMsr7ufp5h+6WgNxQNza7t0r5qQ6b04AJqTlBNixTWZxqP649Q==
@@ -2840,7 +2832,7 @@ effector-react@^22.5.3:
   dependencies:
     use-sync-external-store "^1.0.0"
 
-effector-storage@^6.0.0, effector-storage@^6.0.1:
+effector-storage@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/effector-storage/-/effector-storage-6.0.1.tgz#da4530f4ad8cc7e5d9466e3e5ccdc260a4482ded"
   integrity sha512-uIPbVnBYyJLhfQnJ35f+ideqj8rJ+RcFvLw2UhhIUicbMaeu/UmhUeEf2I2H1N9WOTuEuGfDSHCHO9a4iLdSiw==

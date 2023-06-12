@@ -17,8 +17,7 @@ export type TTodoList = {
 
 export type TTodoListParams = {
   page: number;
-  sort_field?: 'id' | 'username' | 'email' | 'status';
-  sort_direction?: 'asc' | 'desc';
+  sortUrl: string;
 };
 
 export type TSignInParams = {
