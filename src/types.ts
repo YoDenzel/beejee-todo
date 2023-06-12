@@ -48,3 +48,10 @@ export type TCreateTodoResponse = {
     status: 0 | 1 | 10 | 11;
   };
 };
+
+export type TUpdateTodo = Partial<{
+  username: string;
+  text: string;
+  status: 0 | 1 | 10 | 11;
+  email: string;
+}>;

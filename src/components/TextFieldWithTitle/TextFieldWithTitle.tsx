@@ -2,15 +2,13 @@ import {
   Text,
   View,
   TextInput,
-  NativeSyntheticEvent,
   StyleProp,
   TextStyle,
   ViewStyle,
-  TextInputFocusEventData,
 } from 'react-native';
+import { Control, Controller, FieldValues } from 'react-hook-form';
 
 import styles from './styles';
-import { Control, Controller, FieldValues } from 'react-hook-form';
 
 const TextFieldWithTitle = ({
   inputWrapperStyle,
@@ -23,13 +21,11 @@ const TextFieldWithTitle = ({
   inputStyle,
   title,
   titleStyle,
-  borderColor = '#F0F0F0',
-  borderColorOnFocus = '#ccc',
-  error,
-  errorText,
+  borderColor = '#ccc',
   containerStyle,
   control,
   name,
+  disabled,
 }: TTextFieldWithTitle) => {
   return (
     <Controller
@@ -42,9 +38,10 @@ const TextFieldWithTitle = ({
             style={[
               styles.inputWrapper,
               inputWrapperStyle,
-              { borderColor: borderColorOnFocus },
+              { borderColor: borderColor },
             ]}>
             <TextInput
+              editable={!disabled}
               maxLength={maxLength}
               style={[styles.input, inputStyle]}
               value={value}
@@ -70,19 +67,15 @@ type TTextFieldWithTitle = {
   maxLength?: number;
   placeholderTextColor?: string;
   inputStyle?: StyleProp<TextStyle>;
-  onFocus?: (e: NativeSyntheticEvent<TextInputFocusEventData>) => void;
-  onBlur?: () => void;
   isMultiline?: boolean;
   numberOfLines?: number;
   inputWrapperStyle?: any;
   titleStyle?: StyleProp<TextStyle>;
-  error?: boolean;
-  errorText?: string;
   borderColor?: string;
-  borderColorOnFocus?: string;
   containerStyle?: StyleProp<ViewStyle>;
   control: Control<FieldValues>;
   name: string;
+  disabled?: boolean;
 };
 
 export default TextFieldWithTitle;

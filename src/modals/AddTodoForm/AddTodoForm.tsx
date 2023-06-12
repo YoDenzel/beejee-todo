@@ -7,7 +7,13 @@ import { ButtonDefault } from 'components/ButtonDefault';
 import { Control, FieldValues } from 'react-hook-form';
 import { Icons } from 'assets/icons';
 
-const AddTodoForm = ({ visible, control, onClose, onSubmit }: TAddTodoForm) => {
+const AddTodoForm = ({
+  visible,
+  control,
+  onClose,
+  onSubmit,
+  isNameAndEmailDisabled,
+}: TAddTodoForm) => {
   return (
     <Modal visible={visible} transparent onRequestClose={onClose}>
       <View style={styles.container}>
@@ -16,8 +22,18 @@ const AddTodoForm = ({ visible, control, onClose, onSubmit }: TAddTodoForm) => {
           <Icons.CloseIcon width={28} height={28} />
         </TouchableOpacity>
         <ScrollView contentContainerStyle={styles.inputContainer}>
-          <TextFieldWithTitle control={control} name="username" title="Имя" />
-          <TextFieldWithTitle control={control} name="email" title="Почта" />
+          <TextFieldWithTitle
+            control={control}
+            name="username"
+            title="Имя"
+            disabled={isNameAndEmailDisabled}
+          />
+          <TextFieldWithTitle
+            control={control}
+            name="email"
+            title="Почта"
+            disabled={isNameAndEmailDisabled}
+          />
           <TextFieldWithTitle
             control={control}
             isMultiline
@@ -44,6 +60,7 @@ type TAddTodoForm = {
   control: Control<FieldValues>;
   onClose: () => void;
   onSubmit: () => void;
+  isNameAndEmailDisabled?: boolean;
 };
 
 export default AddTodoForm;

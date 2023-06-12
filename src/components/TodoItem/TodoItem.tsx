@@ -4,21 +4,36 @@ import { useMemo } from 'react';
 import { Icons } from 'assets/icons';
 
 import styles from './styles';
+import { useStore } from 'effector-react';
+import { $accessToken } from 'models/auth';
 
-const TodoItem = ({ todoStatus, todoText, userEmail, userName }: TTodoItem) => {
+const TodoItem = ({
+  todoStatus,
+  todoText,
+  userEmail,
+  userName,
+  onCardPress,
+  switchStatus,
+  isLoading,
+}: TTodoItem) => {
   const status = useMemo(
     () => todoStatus === 10 || todoStatus === 11,
     [todoStatus],
   );
+  const isAuth = useStore($accessToken);
 
   return (
-    <View style={styles.todoItemContainer}>
+    <TouchableOpacity
+      disabled={!isAuth}
+      style={styles.todoItemContainer}
+      onPress={onCardPress}>
       <TouchableOpacity
+        onPress={switchStatus}
+        disabled={!isAuth || isLoading}
         style={[
           styles.switchStatusButton,
           status && styles.switchStatusButtonActive,
-        ]}
-        disabled>
+        ]}>
         {status ? <Icons.Tick /> : null}
       </TouchableOpacity>
       <View style={styles.todoTextContainer}>
@@ -34,7 +49,7 @@ const TodoItem = ({ todoStatus, todoText, userEmail, userName }: TTodoItem) => {
           {todoText}
         </Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -43,6 +58,9 @@ type TTodoItem = {
   todoText: string;
   userEmail: string;
   todoStatus: number;
+  onCardPress: () => void;
+  switchStatus: () => void;
+  isLoading?: boolean;
 };
 
 export default TodoItem;
