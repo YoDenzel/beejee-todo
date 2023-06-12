@@ -29,8 +29,13 @@ export default StyleSheet.create({
     zIndex: 2,
     justifyContent: 'center',
     alignItems: 'center',
+    marginRight: 12,
+    width: 24,
+    height: 24,
+    backgroundColor: '#fff',
+  },
+  switchStatusButtonActive: {
     backgroundColor: '#DFBD43',
-    marginRight: 8,
   },
   bottomContainer: {
     flexDirection: 'row',
